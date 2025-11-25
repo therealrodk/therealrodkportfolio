@@ -10,7 +10,7 @@ gem "madmin", "~> 2.0"
 gem "name_of_person", "~> 1.0"
 gem "nokogiri", ">= 1.12.5" # Security update
 gem "noticed", "~> 2.2"
-gem "pagy", "~> 43.0.0.rc2"
+gem "pagy", "~> 43.0"
 gem "pay", "~> 11.0"
 gem "prefixed_ids", "~> 1.2"
 gem "pretender", "~> 0.4"
@@ -37,7 +37,7 @@ gem "whenever", "~> 1.0", require: false if Jumpstart.config.gems.include?("when
 
 omniauth_providers = Jumpstart.config.omniauth_providers
 gem "omniauth", "~> 2.1" if omniauth_providers.any?
-gem "omniauth-rails_csrf_protection", "~> 1.0" if omniauth_providers.any?
+gem "omniauth-rails_csrf_protection", "~> 2.0" if omniauth_providers.any?
 gem "omniauth-twitter", github: "excid3/omniauth-twitter" if omniauth_providers.include?("twitter")
 gem "omniauth-facebook", github: "excid3/omniauth-facebook" if omniauth_providers.include?("facebook")
 gem "omniauth-github" if omniauth_providers.include?("github")
