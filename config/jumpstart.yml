@@ -1,0 +1,17 @@
+---
+application_name: therealrodk
+business_name: therealrodk
+business_address: 
+domain: therealrodk.dev
+support_email: me@therealrodk.dev
+default_from_email: therealrodk <no-reply@therealrodk.dev>
+background_job_processor: solid_queue
+email_provider: 
+account_types: personal
+apns: false
+fcm: false
+integrations:
+omniauth_providers:
+payment_processors:
+multitenancy:
+gems:
