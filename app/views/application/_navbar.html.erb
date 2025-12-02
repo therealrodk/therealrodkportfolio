@@ -1,7 +1,15 @@
-<nav class="top-nav" data-controller="toggle">
+<div class="flex justify-center bg-black py-8 hidden sm:block">
+  <%= link_to root_path do %>
+    <%= image_tag 'logo.png', alt: 'therealrodk', class: 'mx-auto' %>
+  <% end %>
+</div>
+
+<nav class="top-nav bg-black" data-controller="toggle">
   <section class="logo">
     <%= link_to root_path do %>
-      <%= render_svg "logo", styles: "fill-current" %>
+      <%#= render_svg "logo", styles: "fill-current" %>
+      <%= image_tag 'bee-40x40.png', alt: 'therealrodk', class: 'mx-auto' %>
+      <%= image_tag 'logo-mini.png', alt: 'therealrodk', class: 'mx-auto' %>
       <span class="sr-only"><%= Jumpstart.config.application_name %></span>
     <% end %>
   </section>

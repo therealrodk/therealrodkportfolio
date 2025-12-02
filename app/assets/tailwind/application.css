@@ -32,6 +32,8 @@
 @import "./components/forms.css" layer(components);
 @import "./components/hotwire_native.css" layer(components);
 @import "./components/iframe.css" layer(components);
+@import "./components/links.css" layer(components);
+@import "./components/logo.css" layer(components);
 @import "./components/modal.css" layer(components);
 @import "./components/nav.css" layer(components);
 @import "./components/notifications.css" layer(components);
