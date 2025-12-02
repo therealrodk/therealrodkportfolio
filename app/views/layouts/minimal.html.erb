@@ -9,10 +9,12 @@
       <%= impersonation_banner %>
       <%= render "flash" %>
 
-      <nav class="minimal-top-nav">
+      <nav class="minimal-top-nav flex justify-start bg-black">
         <%= link_to root_path do %>
-          <%= render_svg "logo" %>
-          <span class="sr-only"><%= Jumpstart.config.application_name %></span>
+          <%#= render_svg "logo" %>
+<!--          <span class="sr-only"><%#= Jumpstart.config.application_name %></span>-->
+          <%= image_tag 'bee-40x40.png', alt: 'therealrodk', class: 'mx-auto' %>
+          <%= image_tag 'logo-mini.png', alt: 'therealrodk', class: 'mx-auto' %>
         <% end %>
       </nav>
     </header>
