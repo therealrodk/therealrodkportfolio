@@ -3,6 +3,7 @@
 <%= csp_meta_tag %>
 <%= viewport_meta_tag %>
 
+<%= render 'application/favicon' %>
 <% if current_user&.system_theme? %>
   <script>document.documentElement.classList.toggle("dark", window.matchMedia('(prefers-color-scheme: dark)').matches)</script>
 <% end %>
