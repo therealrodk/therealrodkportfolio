@@ -2,6 +2,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   invisible_captcha only: :create
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_user_registration_path, alert: I18n.t("try_again_later") }
 
+  def new
+    redirect_to root_path, alert: "Sign up is disabled."
+  end
+
+  def create
+    redirect_to root_path, alert: "Sign up is disabled."
+  end
+
   protected
 
   def build_resource(hash = {})

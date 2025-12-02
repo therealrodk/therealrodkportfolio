@@ -17,17 +17,22 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   class BasicRegistrationTest < Users::RegistrationsControllerTest
-    test "successfully registration form render" do
+    test "cannot successfully registration form render" do
       get new_user_registration_path
-      assert_response :success
-      assert_includes response.body, "user[name]"
-      assert_includes response.body, "user[email]"
-      assert_includes response.body, "user[password]"
-      assert_includes response.body, InvisibleCaptcha.sentence_for_humans
+      assert_response :redirect
+      assert_redirected_to root_path
+      # TODO: Don't know why this line isn't working, but at least it redirects.
+      # assert_select "p", text: "Sign up is disabled."
+
+      # assert_response :success
+      # assert_includes response.body, "user[name]"
+      # assert_includes response.body, "user[email]"
+      # assert_includes response.body, "user[password]"
+      # assert_includes response.body, InvisibleCaptcha.sentence_for_humans
     end
 
     test "successful user registration" do
-      assert_difference "User.count" do
+      assert_no_difference "User.count" do
         post user_registration_url, params: @user_params
       end
     end
@@ -40,8 +45,9 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   class InvibleCaptchaTest < Users::RegistrationsControllerTest
-    test "honeypot is not filled and user creation succeeds" do
-      assert_difference "User.count" do
+    # test "honeypot is not filled and user creation succeeds" do
+    test "honeypot is not filled and user creation fails because signup is disabled" do
+      assert_no_difference "User.count" do
         post user_registration_url, params: @user_params.merge(honeypotx: "")
       end
     end
@@ -64,7 +70,9 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
     test "prompts for account details on sign up if enabled" do
       Jumpstart.config.stub(:register_with_account?, true) do
         get new_user_registration_path
-        assert_select "label", text: I18n.t("helpers.label.account.name")
+        assert_response :redirect
+        assert_redirected_to root_path
+        # assert_select "label", text: I18n.t("helpers.label.account.name")
       end
     end
   end

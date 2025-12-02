@@ -42,18 +42,19 @@ class Jumpstart::AccountInvitationsTest < ActionDispatch::IntegrationTest
     assert_redirected_to account_invitation_path(@account_invitation)
   end
 
-  test "accepts invitation automatically through sign up" do
-    assert_difference "User.count" do
+  # test "accepts invitation automatically through sign up" do
+  test "Doesn't accept invitation automatically because signup is disabled" do
+    assert_no_difference "User.count" do
       post user_registration_path(invite: @account_invitation.token), params: {user: {name: "Invited User", email: "new@inviteduser.com", password: "password", password_confirmation: "password", terms_of_service: "1"}}
     end
     assert_redirected_to user_root_path
 
-    user = User.order(created_at: :asc).last
+    # user = User.order(created_at: :asc).last
     # Depending on configuration, may have a personal account
-    assert_equal ((Jumpstart.config.account_types == "team") ? 1 : 2), user.accounts.count
-    assert_includes User.last.accounts, @account
-    assert_raises ActiveRecord::RecordNotFound do
-      @account_invitation.reload
-    end
+    # assert_equal ((Jumpstart.config.account_types == "team") ? 1 : 2), user.accounts.count
+    # assert_includes User.last.accounts, @account
+    # assert_raises ActiveRecord::RecordNotFound do
+    #   @account_invitation.reload
+    # end
   end
 end
